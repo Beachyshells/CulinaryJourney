@@ -35,7 +35,7 @@ interface Child {
   id: number;
   name: string;
   age: number;
-  gender: "girls" | "boys";
+  gender: "girls" | "boys" | "neutral";
 }
 
 interface RecipeCardProps {
@@ -46,6 +46,16 @@ interface RecipeCardProps {
 
 export default function RecipeCard({ recipe, child, className = "" }: RecipeCardProps) {
   const { toast } = useToast();
+  const getThemeClass = () => {
+    return child.gender === 'girls' ? 'theme-girls' : 
+           child.gender === 'boys' ? 'theme-boys' : 'theme-neutral';
+  };
+
+  const getGradientClass = () => {
+    return child.gender === 'girls' ? 'gradient-girls' : 
+           child.gender === 'boys' ? 'gradient-boys' : 'gradient-neutral';
+  };
+
   const isGirlsTheme = child.gender === "girls";
 
   const toggleFavoriteMutation = useMutation({

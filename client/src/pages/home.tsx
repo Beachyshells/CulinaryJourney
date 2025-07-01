@@ -131,7 +131,7 @@ export default function Home() {
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {children.map((child) => (
                 <Card key={child.id} className="hover:shadow-lg transition-shadow">
-                  <CardHeader className={`${child.gender === 'girls' ? 'gradient-girls' : 'gradient-boys'} text-white rounded-t-lg`}>
+                  <CardHeader className={`${child.gender === 'girls' ? 'gradient-girls' : child.gender === 'boys' ? 'gradient-boys' : 'gradient-neutral'} text-white rounded-t-lg`}>
                     <div className="flex justify-between items-start">
                       <div>
                         <CardTitle className="text-xl font-poppins">{child.name}</CardTitle>
@@ -139,7 +139,7 @@ export default function Home() {
                       </div>
                       <div className="bg-white bg-opacity-20 rounded-lg px-3 py-1">
                         <p className="text-sm font-medium">
-                          {child.gender === 'girls' ? '👧' : '👦'} {child.gender}
+                          {child.gender === 'girls' ? '👧' : child.gender === 'boys' ? '👦' : '🌟'} {child.gender}
                         </p>
                       </div>
                     </div>
@@ -166,7 +166,7 @@ export default function Home() {
                     
                     <div className="flex gap-2">
                       <Link href={`/interview/${child.id}`}>
-                        <Button className={`flex-1 ${child.gender === 'girls' ? 'bg-pink-500 hover:bg-pink-600' : 'bg-blue-500 hover:bg-blue-600'} text-white`}>
+                        <Button className={`flex-1 ${child.gender === 'girls' ? 'bg-pink-500 hover:bg-pink-600' : child.gender === 'boys' ? 'bg-blue-500 hover:bg-blue-600' : 'bg-yellow-500 hover:bg-yellow-600'} text-white`}>
                           <Plus className="h-4 w-4 mr-2" />
                           New Recipe
                         </Button>

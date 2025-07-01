@@ -45,7 +45,7 @@ export const children = pgTable("children", {
   userId: varchar("user_id").notNull().references(() => users.id, { onDelete: "cascade" }),
   name: varchar("name").notNull(),
   age: integer("age").notNull(),
-  gender: varchar("gender").notNull(), // girls, boys
+  gender: varchar("gender").notNull(), // girls, boys, neutral
   preferences: text("preferences"), // dietary restrictions, favorite foods
   createdAt: timestamp("created_at").defaultNow(),
   updatedAt: timestamp("updated_at").defaultNow(),

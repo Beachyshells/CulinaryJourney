@@ -8,7 +8,7 @@ const openai = new OpenAI({
 export interface RecipeRequest {
   childName: string;
   age: number;
-  gender: "girls" | "boys";
+  gender: "girls" | "boys" | "neutral";
   mealType: string;
   skillLevel: string;
   preferences?: string;
@@ -43,12 +43,12 @@ export interface InterviewQuestion {
   required: boolean;
 }
 
-export async function generateRecipeInterview(childName: string, age: number, gender: "girls" | "boys"): Promise<InterviewQuestion[]> {
-  const prompt = `Create a fun, age-appropriate recipe interview for ${childName}, a ${age}-year-old ${gender === "girls" ? "girl" : "boy"}. 
+export async function generateRecipeInterview(childName: string, age: number, gender: "girls" | "boys" | "neutral"): Promise<InterviewQuestion[]> {
+  const prompt = `Create a fun, age-appropriate recipe interview for ${childName}, a ${age}-year-old ${gender === "girls" ? "girl" : gender === "boys" ? "boy" : "child"}. 
   
   Generate 6-8 interview questions that will help create the perfect recipe. Consider:
   - Age-appropriate language and concepts
-  - Gender preferences (${gender} theme)
+  - Theme preference (${gender})
   - Skill level appropriate for age ${age}
   - Fun and engaging questions
   
@@ -157,10 +157,12 @@ export async function generateRecipe(request: RecipeRequest): Promise<GeneratedR
   }
 }
 
-export async function generateRecipeImage(recipeTitle: string, childAge: number, gender: "girls" | "boys"): Promise<string> {
-  const themeStyle = gender === "girls" ? "pink and purple themed, cute and whimsical" : "blue and green themed, adventurous and fun";
+export async function generateRecipeImage(recipeTitle: string, childAge: number, gender: "girls" | "boys" | "neutral"): Promise<string> {
+  const themeStyle = gender === "girls" ? "pink and purple themed, cute and whimsical" : 
+                    gender === "boys" ? "blue and green themed, adventurous and fun" :
+                    "warm and colorful themed, friendly and inclusive";
   
-  const prompt = `A beautiful, appetizing photo of ${recipeTitle}, styled for a ${childAge}-year-old ${gender === "girls" ? "girl" : "boy"}. ${themeStyle} presentation, child-friendly plating, bright and colorful, food photography style, well-lit, appealing to children.`;
+  const prompt = `A beautiful, appetizing photo of ${recipeTitle}, styled for a ${childAge}-year-old ${gender === "girls" ? "girl" : gender === "boys" ? "boy" : "child"}. ${themeStyle} presentation, child-friendly plating, bright and colorful, food photography style, well-lit, appealing to children.`;
 
   try {
     const response = await openai.images.generate({

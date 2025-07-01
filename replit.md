@@ -48,7 +48,7 @@ CookingStory is a full-stack web application that creates personalized recipe ex
 - Personalized recipe recommendations based on child preferences
 
 ### Theme System
-- Gender-based theming (girls/boys editions)
+- Three theme options: Girls (pink/purple), Boys (blue/green), and Neutral (warm colors)
 - Custom CSS variables for dynamic theming
 - Printable recipe card templates
 - Responsive design for mobile and desktop
@@ -118,3 +118,4 @@ Preferred communication style: Simple, everyday language.
 
 Changelog:
 - July 01, 2025. Initial setup
+- July 01, 2025. Added gender-neutral theme option with warm colors (yellow/orange/green) for inclusive design

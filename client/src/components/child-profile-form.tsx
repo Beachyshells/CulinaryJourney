@@ -47,7 +47,7 @@ export default function ChildProfileForm({ onClose, onSuccess }: ChildProfileFor
     defaultValues: {
       name: "",
       age: 5,
-      gender: "girls",
+      gender: "neutral",
       preferences: "",
     },
   });
@@ -163,7 +163,7 @@ export default function ChildProfileForm({ onClose, onSuccess }: ChildProfileFor
                     <RadioGroup
                       onValueChange={field.onChange}
                       defaultValue={field.value}
-                      className="grid grid-cols-2 gap-4"
+                      className="grid grid-cols-1 sm:grid-cols-3 gap-4"
                     >
                       <div className="flex items-center space-x-2 border-2 border-pink-200 rounded-lg p-4 hover:bg-pink-50 transition-colors">
                         <RadioGroupItem value="girls" id="girls" />
@@ -192,6 +192,21 @@ export default function ChildProfileForm({ onClose, onSuccess }: ChildProfileFor
                             <div className="w-4 h-4 bg-blue-400 rounded"></div>
                           </div>
                           <p className="text-xs text-gray-600">Blue & green theme</p>
+                        </Label>
+                      </div>
+
+                      <div className="flex items-center space-x-2 border-2 border-yellow-200 rounded-lg p-4 hover:bg-yellow-50 transition-colors">
+                        <RadioGroupItem value="neutral" id="neutral" />
+                        <Label htmlFor="neutral" className="flex-1 cursor-pointer">
+                          <div className="gradient-neutral rounded-lg p-3 mb-2">
+                            <span className="text-white font-semibold">🌟 Neutral Edition</span>
+                          </div>
+                          <div className="flex gap-1 mb-2">
+                            <div className="w-4 h-4 bg-yellow-500 rounded"></div>
+                            <div className="w-4 h-4 bg-orange-500 rounded"></div>
+                            <div className="w-4 h-4 bg-green-600 rounded"></div>
+                          </div>
+                          <p className="text-xs text-gray-600">Warm & inclusive theme</p>
                         </Label>
                       </div>
                     </RadioGroup>

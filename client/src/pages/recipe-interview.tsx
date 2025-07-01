@@ -278,9 +278,9 @@ export default function RecipeInterview() {
           </Link>
           
           <div className="flex items-center gap-4 mb-6">
-            <div className={`w-16 h-16 ${child.gender === 'girls' ? 'gradient-girls' : 'gradient-boys'} rounded-full flex items-center justify-center`}>
+            <div className={`w-16 h-16 ${child.gender === 'girls' ? 'gradient-girls' : child.gender === 'boys' ? 'gradient-boys' : 'gradient-neutral'} rounded-full flex items-center justify-center`}>
               <span className="text-2xl">
-                {child.gender === 'girls' ? '👧' : '👦'}
+                {child.gender === 'girls' ? '👧' : child.gender === 'boys' ? '👦' : '🌟'}
               </span>
             </div>
             <div>
@@ -303,7 +303,7 @@ export default function RecipeInterview() {
 
         {/* Question Card */}
         <Card className="shadow-lg">
-          <CardHeader className={`${child.gender === 'girls' ? 'gradient-girls' : 'gradient-boys'} text-white`}>
+          <CardHeader className={`${child.gender === 'girls' ? 'gradient-girls' : child.gender === 'boys' ? 'gradient-boys' : 'gradient-neutral'} text-white`}>
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 bg-white bg-opacity-20 rounded-full flex items-center justify-center">
                 <ChefHat className="h-5 w-5 text-white" />
